@@ -2,11 +2,12 @@
 //  AppDelegate.h
 //  Xenon
 //
-//  Created by SadikAli on 1/30/12.
+//  Created by Mahendra on 1/30/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "App_LoginScreenVC.h"
 
 @class ViewController;
 
@@ -14,6 +15,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) App_LoginScreenVC *viewController;
 
 @end

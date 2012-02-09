@@ -1,13 +1,13 @@
 //
-//  XenonTests.h
-//  XenonTests
+//  ConstantDefines.m
+//  Xenon
 //
 //  Created by Mahendra on 1/30/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import "ConstantDefines.h"
 
-@interface XenonTests : SenTestCase
+@implementation ConstantDefines
 
 @end
