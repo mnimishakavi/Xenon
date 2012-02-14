@@ -22,7 +22,7 @@
 
 
 //Uncomment this only if you are a developer
-#define DEVELOPMENT 1
+//#define DEVELOPMENT 1
 
 typedef enum industryType{
     IND = 1,
