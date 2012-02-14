@@ -9,12 +9,25 @@
 #import "AXCDetailsVC.h"
 
 @implementation AXCDetailsVC
+@synthesize entityItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:@"App_TableViewController" bundle:nil];
     if (self) {
         // Custom initialization
+    }
+    return self;
+}
+
+-(id)initWithEntityItem:(NSString*)selectedEntity
+{
+    self = [super init];
+    
+    if(self)
+    {
+        //self.entityItem = [[NSString alloc] initWithString:selectedEntity];
+        self.entityItem = selectedEntity;
     }
     return self;
 }
@@ -40,8 +53,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title =@"AXCtest";
-    [self setTableFrame:CGRectMake(10, 56, 300, 150)];
+    self.title =self.entityItem;
+    DataSource* dataSource = [[DataSource alloc] init];
+    dataSourceArray = [[dataSource getEntityListItemsWithEntity:self.entityItem Type:PK] retain];
+    RELEASE_TO_NIL(dataSource);
+    int i = 50* [dataSourceArray count];
+    
+    if(i<300)
+        [self setTableFrame:CGRectMake(10, 26, 300, i)];
+    else
+        [self setTableFrame:CGRectMake(10, 26, 300, 300)];
 }
 
 - (void)viewDidUnload
@@ -62,7 +83,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return [dataSourceArray count];
 } 
 
 - (void)configureCell:(DefaultCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -70,7 +91,8 @@
     
     cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list_item_bg.png"]] autorelease];
     
-    cell.cellText.text = @"AXCtest2";
+    cell.cellText.text = [[dataSourceArray objectAtIndex:indexPath.row] name];
+    cell.cellSubText.text = [(entityItem*)[dataSourceArray objectAtIndex:indexPath.row] value];
 }
 
 

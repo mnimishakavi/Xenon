@@ -10,7 +10,7 @@
 #import "DataSource.h"
 #import "PKDetailsVC.h"
 
-@interface PKHomeVC : App_TableViewController
+@interface PKHomeVC : App_TableViewController<dataSourceDelegate>
 {
     
 }

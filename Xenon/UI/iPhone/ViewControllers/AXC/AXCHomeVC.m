@@ -41,10 +41,14 @@
     [super viewDidLoad];
     
     //Resizing the Table View depending on the data
-    [self setTableFrame:CGRectMake(10, 56, 300, 300)];
+    [self setTableFrame:CGRectMake(10, 16, 300, 300)];
     
-    //self.title = @"Industrials";
-    //DataSource* dataSource = [[DataSource alloc] init];
+    [self showHUD:@"Fetching Data"];
+    
+    DataSource* dataSource = [[DataSource alloc] init];
+    dataSource.delegate = self;
+    [dataSource getEntityListOfIndustry:AXC];
+    [dataSource release];
     
 }
 
@@ -61,12 +65,34 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+#pragma mark Data Source Callbacks
+
+-(void)dataSourceEntityListFetchDidFinish:(NSMutableArray *)entityArray
+{
+    [self dismissHUD];
+    
+    dataSourceArray = [entityArray retain];
+    
+    [self.defaultTableView reloadData];
+}
+
+-(void)dataSourceEntityListFetchDidFail:(NSError *)error
+{
+    [self dismissHUD];
+    [App_GeneralUtilities showAlertOKWithTitle:@"Error" withMessage:[error localizedDescription]];
+}
+
+
+
 #pragma mark Table method overrides
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    NSLog(@"array count is %d",[dataSourceArray count]);
+    return [dataSourceArray count];
+    
 } 
 
 - (void)configureCell:(DefaultCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -74,12 +100,13 @@
     
     cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list_item_bg.png"]] autorelease];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.cellText.text = @"AXCtest";
+    cell.cellText.text = [dataSourceArray objectAtIndex:indexPath.row];
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AXCDetailsVC* detailsVC = [[AXCDetailsVC alloc] init];
+    AXCDetailsVC* detailsVC = [[AXCDetailsVC alloc] initWithEntityItem:[dataSourceArray objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:detailsVC animated:YES];
     [detailsVC release];
 }

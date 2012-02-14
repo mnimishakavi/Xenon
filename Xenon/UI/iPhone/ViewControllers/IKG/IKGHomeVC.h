@@ -8,7 +8,8 @@
 
 #import "App_TableViewController.h"
 #import "IKGDetailsVC.h"
+#import "DataSource.h"
 
-@interface IKGHomeVC : App_TableViewController
+@interface IKGHomeVC : App_TableViewController<dataSourceDelegate>
 
 @end

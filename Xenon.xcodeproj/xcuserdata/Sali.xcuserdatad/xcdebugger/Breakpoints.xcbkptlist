@@ -18,46 +18,18 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Xenon/Classes/Storage/App_Storage.m"
-         timestampString = "349968235.214468"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
-         landmarkName = "-initVars"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Xenon/Classes/Storage/App_Storage.m"
-         timestampString = "349968231.77958"
+         filePath = "Xenon/Classes/Parsers/ParserInterface.m"
+         timestampString = "350915369.415485"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "120"
-         endingLineNumber = "120"
-         landmarkName = "-doBulkInsertIntoTable:ContentValues:"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
+         landmarkName = "-parseDataofIndustry:"
          landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Xenon/UI/iPhone/ViewControllers/IND/IndustrialHomeVC.m"
-         timestampString = "350218967.034444"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "113"
-         endingLineNumber = "113"
-         landmarkName = "@implementation IndustrialHomeVC"
-         landmarkType = "3">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

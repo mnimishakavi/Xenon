@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AXCDetailsVC.h"
+#import "DataSource.h"
 
-@interface AXCHomeVC : App_TableViewController
+@interface AXCHomeVC : App_TableViewController<dataSourceDelegate>
 {
     
 }

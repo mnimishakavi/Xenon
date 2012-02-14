@@ -10,6 +10,7 @@
 
 @implementation DefaultCell
 @synthesize cellText;
+@synthesize cellSubText;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataSource.h"
 
 
 @interface IndustrialDetailsVC : App_TableViewController
 {
-    
+    NSString* entityItem;
 }
 
+@property(nonatomic,retain)NSString* entityItem;
+
+
+-(id)initWithEntityItem:(NSString*)selectedEntity;
 - (void)configureCell:(DefaultCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end

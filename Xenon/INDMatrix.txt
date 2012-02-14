@@ -1,0 +1,141 @@
+{
+    "d": {
+        "Title": "Industrials",
+        "Items": [
+            {
+                "Title": "Orders",
+                "Items": [
+                    {
+                        "Title": "Prior Day",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "30 Day Moving Avg.",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "MTD (Total)",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "Year Ago Month (Total)",
+                        "Value": "$260,000"
+                    }
+                ]
+            },
+            {
+                "Title": "Accoutns Receivable",
+                "Items": [
+                    {
+                        "Title": "Total > 90 Days",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "% of Total A/R Over 90 Days",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "> 90 Days Prior Month",
+                        "Value": "$260,000"
+                    }
+                ]
+            },
+            {
+                "Title": "Revenues",
+                "Items": [
+                    {
+                        "Title": "Prior Day",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "MTD",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "Forecast (Month)",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "Mid Month Forecast",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "Original Plan (Month)",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "Year Ago Month (Month)",
+                        "Value": "$260,000"
+                    }
+                ]
+            },
+            {
+                "Title": "Backlog",
+                "Items": [
+                    {
+                        "Title": "Current",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "Prior Month",
+                        "Value": "$260,000"
+                    },
+                    {
+                        "Title": "Prior Year (Total)",
+                        "Value": "$260,000"
+                    }
+                ]
+            },
+            {
+                "Title": "Headcount",
+                "Items": [
+                    {
+                        "Title": "USA",
+                        "Value": "1500"
+                    },
+                    {
+                        "Title": "Brazil",
+                        "Value": "600"
+                    },
+                    {
+                        "Title": "Australia",
+                        "Value": "1"
+                    },
+                    {
+                        "Title": "China",
+                        "Value": "500"
+                    },
+                    {
+                        "Title": "Mexico",
+                        "Value": "400"
+                    },
+                    {
+                        "Title": "Current (Total)",
+                        "Value": "2500"
+                    },
+                    {
+                        "Title": "Prior Month (Total)",
+                        "Value": "2400"
+                    },
+                    {
+                        "Title": "Prior Month Change",
+                        "Value": "100"
+                    }
+                ]
+            },
+            {
+                "Title": "Safety",
+                "Items": [
+                    {
+                        "Title": "Recordable MTD",
+                        "Value": "10"
+                    },
+                    {
+                        "Title": "Recordable YTD",
+                        "Value": "30"
+                    }
+                ]
+            }
+        ]
+    }
+}

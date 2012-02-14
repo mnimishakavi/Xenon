@@ -22,7 +22,7 @@
 
 
 //Uncomment this only if you are a developer
-//#define DEVELOPMENT 1
+#define DEVELOPMENT 1
 
 typedef enum industryType{
     IND = 1,
@@ -30,6 +30,14 @@ typedef enum industryType{
     IKG = 3,
     PK = 4
 }Industry;
+
+
+typedef enum parserType{
+    IND_Parser = 1,
+    AXC_Parser = 2,
+    IKG_Parser = 3,
+    PK_Parser = 4
+}Parser;
 
 @interface ConstantDefines : NSObject
 

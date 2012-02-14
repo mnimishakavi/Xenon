@@ -4,8 +4,6 @@
 //
 //  Created by Mahendra on 1/30/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-
-//git checkin
 //
 
 #import <UIKit/UIKit.h>

@@ -11,10 +11,12 @@
 @interface DefaultCell : UITableViewCell
 {
      IBOutlet UILabel* cellText;
+     IBOutlet UILabel* cellSubText;
 }
 
 
 @property(nonatomic,retain)UILabel* cellText;
+@property(nonatomic,retain)UILabel* cellSubText;
 
 - (void) initVars;
 

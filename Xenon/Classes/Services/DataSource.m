@@ -17,6 +17,8 @@
     if(self = [super init])
     {
         dataBase = [App_Storage getInstance];
+        parser = [[ParserInterface alloc] init];
+        
     }
     
     return self;
@@ -31,17 +33,126 @@
 -(void)getEntityListOfIndustry:(Industry)industry
 {
     
-    //dummy test
-  //  NSLog(@"count is %d",[[dataBase getEntityListFromTable:IND_ENTITY_LIST] count]);
     
-    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(sendTestError) userInfo:nil repeats:NO];
+    if(industry == IND)
+    {
+       //will be replaced by actual threading logic in future
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSNumber numberWithInt:IND], @"industry",
+                                  /* ... */
+                                  nil];
+        [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(sendTestData:) userInfo:userInfo repeats:NO];
+    }
+    else if(industry == AXC)
+    {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSNumber numberWithInt:AXC], @"industry",
+                                  /* ... */
+                                  nil];
+        [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(sendTestData:) userInfo:userInfo repeats:NO];
+    }
+    else if(industry == PK)
+    {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSNumber numberWithInt:PK], @"industry",
+                                  /* ... */
+                                  nil];
+        [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(sendTestData:) userInfo:userInfo repeats:NO];
+    }
+    else if(industry == IKG)
+    {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSNumber numberWithInt:IKG], @"industry",
+                                  /* ... */
+                                  nil];
+        
+        [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(sendTestData:) userInfo:userInfo repeats:NO];
+    }
+        
+    
+    
 }
 
--(void)sendTestData
+-(NSMutableArray*)getEntityListItemsWithEntity:(NSString*)entity Type:(Industry)Industry
 {
+    return [dataBase getEntityListItemsFromTable:IND_ENTITY_ITEMS ForEntity:entity];
+}
+
+-(NSMutableArray*)getEntityListItemsOfIndustry:(Industry)industry ForEntity:(NSString*)entityValue
+{
+    //for now pulling from DB can be nw also
+    
+    return [dataBase getEntityListItemsFromTable:IND_ENTITY_ITEMS ForEntity:@"finance"];
+}
+                                     
+                                         
+                                     
+
+-(void)sendTestData:(NSTimer *)timer
+{
+    NSDictionary *userInfo = [timer userInfo];
+    int industryType = [[userInfo objectForKey:@"industry"] intValue];
+    
     if(delegate && [delegate respondsToSelector:@selector(dataSourceEntityListFetchDidFinish:)])
     {
-        [delegate dataSourceEntityListFetchDidFinish:[dataBase getEntityListFromTable:IND_ENTITY_LIST]];
+        if(industryType== IND)
+        {
+            if([[dataBase getEntityListFromTable:IND_ENTITY_LIST] count])
+            {
+                 [delegate dataSourceEntityListFetchDidFinish:[dataBase getEntityListFromTable:IND_ENTITY_LIST]];
+            }
+            else
+            {
+                [parser parseDataofIndustry:IND];
+                [delegate dataSourceEntityListFetchDidFinish:[dataBase getEntityListFromTable:IND_ENTITY_LIST]];
+            }
+           
+           
+        }
+        else if(industryType == AXC)
+        {
+            if([[dataBase getEntityListFromTable:AXC_ENTITY_LIST] count])
+            {
+                [delegate dataSourceEntityListFetchDidFinish:[dataBase getEntityListFromTable:AXC_ENTITY_LIST]];
+            }
+            else
+            {
+                [parser parseDataofIndustry:AXC];
+                [delegate dataSourceEntityListFetchDidFinish:[dataBase getEntityListFromTable:AXC_ENTITY_LIST]];
+            }
+            
+            
+        }
+        else if(industryType == PK)
+        {
+            
+            if([[dataBase getEntityListFromTable:PK_ENTITY_LIST] count])
+            {
+                [delegate dataSourceEntityListFetchDidFinish:[dataBase getEntityListFromTable:PK_ENTITY_LIST]];
+            }
+            else
+            {
+                [parser parseDataofIndustry:PK];
+                [delegate dataSourceEntityListFetchDidFinish:[dataBase getEntityListFromTable:PK_ENTITY_LIST]];
+            }
+
+            
+        }
+        else if(industryType == IKG)
+        {
+            
+            if([[dataBase getEntityListFromTable:IKG_ENTITY_LIST] count])
+            {
+                [delegate dataSourceEntityListFetchDidFinish:[dataBase getEntityListFromTable:IKG_ENTITY_LIST]];
+            }
+            else
+            {
+                [parser parseDataofIndustry:IKG];
+                [delegate dataSourceEntityListFetchDidFinish:[dataBase getEntityListFromTable:IKG_ENTITY_LIST]];
+            }
+        }
+       
+       
     }
 }
 
@@ -56,5 +167,7 @@
     }
    
 }
+
+
 
 @end

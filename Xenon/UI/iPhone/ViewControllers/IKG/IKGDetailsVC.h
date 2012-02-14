@@ -7,7 +7,15 @@
 //
 
 #import "App_TableViewController.h"
+#import "DataSource.h"
 
 @interface IKGDetailsVC : App_TableViewController
+{
+    NSString* entityItem;
+
+}
+
+@property(nonatomic,retain)NSString* entityItem;
+-(id)initWithEntityItem:(NSString*)selectedEntity;
 
 @end

@@ -196,7 +196,7 @@
 -(void)signInDidPass
 {
     [self dismissHUD];
-    [App_GeneralUtilities showAlertOKWithTitle:@"Success" withMessage:@"Valid User"];
+    //[App_GeneralUtilities showAlertOKWithTitle:@"Success" withMessage:@"Valid User"];
     [self launchUI];
     
     

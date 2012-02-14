@@ -43,12 +43,18 @@
     [super viewDidLoad];
     
     //Resizing the Table View depending on the data
-    [self setTableFrame:CGRectMake(10, 56, 300, 300)];
+    [self setTableFrame:CGRectMake(10, 16, 300, 300)];
     
     //self.title = @"Industrials";
     
-    
+    [self showHUD:@"Fetching Data"];
     DataSource* dataSource = [[DataSource alloc] init];
+    
+    dataSource.delegate = self;
+    
+    [dataSource getEntityListOfIndustry:IND];
+    
+    [dataSource release];
     
 }
 
@@ -70,15 +76,17 @@
 
 -(void)dataSourceEntityListFetchDidFinish:(NSMutableArray *)entityArray
 {
+    [self dismissHUD];
     
     
+    dataSourceArray = [entityArray retain];
     
-   
+    [self.defaultTableView reloadData];
 }
 
 -(void)dataSourceEntityListFetchDidFail:(NSError *)error
 {
-     
+    [self dismissHUD];
     [App_GeneralUtilities showAlertOKWithTitle:@"Error" withMessage:[error localizedDescription]];
 }
 
@@ -89,8 +97,8 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 
 {
-    
-    return 6;
+    NSLog(@"array count is %d",[dataSourceArray count]);
+    return [dataSourceArray count];
 } 
 
 
@@ -100,12 +108,12 @@
     
     cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list_item_bg.png"]] autorelease];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.cellText.text = @"INDTest";
+    cell.cellText.text = [dataSourceArray objectAtIndex:indexPath.row];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IndustrialDetailsVC* detailsVC = [[IndustrialDetailsVC alloc] init];
+    IndustrialDetailsVC* detailsVC = [[IndustrialDetailsVC alloc] initWithEntityItem:[dataSourceArray objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:detailsVC animated:YES];
     [detailsVC release];
 }
